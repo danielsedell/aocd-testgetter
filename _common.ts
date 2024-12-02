@@ -7,6 +7,8 @@ export interface Config {
 export interface AocdSource {
   getInput(year: number, day: number): Promise<string>;
 
+  getTestData(year: number, day: number): Promise<string>;
+
   submit(
     year: number,
     day: number,

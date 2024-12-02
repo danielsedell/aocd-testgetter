@@ -1,5 +1,5 @@
 {
-  "name": "@macil/aocd",
+  "name": "@daniel.sedell/aocd-testgetter",
   "version": "2.0.2",
   "exports": {
     ".": "./mod.ts",

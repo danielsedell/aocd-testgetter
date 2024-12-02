@@ -173,7 +173,7 @@ aocd start 2
 `;
 }
 
-export function dayScript(year: number, day: number) {
+export function dayScript(year: number, day: number, testData: string) {
   return `\
 import { assertEquals } from "@std/assert";
 import { runPart } from "@macil/aocd";
@@ -198,11 +198,7 @@ if (import.meta.main) {
 }
 
 const TEST_INPUT = \`\\
-6
-7
-8
-9
-10
+${testData}
 \`;
 
 Deno.test("part1", () => {

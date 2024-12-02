@@ -8,7 +8,7 @@ import { version } from "./version.ts";
 const defaultAocdSource = new DefaultAocdSource();
 
 await new Command()
-  .name("aocd")
+  .name("aocd-testgetter")
   .description(
     "Helper tool for solving Advent of Code with Deno.\nFull instructions are available at <https://github.com/Macil/aocd/blob/main/README.md>.",
   )

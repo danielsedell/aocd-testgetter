@@ -142,6 +142,36 @@ export class DefaultAocdSource implements AocdSource {
     return match[1];
   }
 
+  readonly getTestData: (year: number, day: number) => Promise<string> =
+    memoize(
+      async (year: number, day: number): Promise<string> => {
+        const url = `https://adventofcode.com/${year}/day/${day}`;
+        const AOC_SESSION = await this.#getSessionCookie();
+        const req = await fetch(
+          url,
+          {
+            headers: {
+              Cookie: `session=${AOC_SESSION}`,
+              "User-Agent": userAgent,
+            },
+          },
+        );
+        if (!req.ok) {
+          await this.#logResponseError(req);
+          throw new Error(`Bad response: ${req.status}`);
+        }
+        return this.#getTestElementHtml(await req.text());
+      },
+    );
+
+  #getTestElementHtml(fullHtml: string): string {
+    const match = /<pre\b[^>]*>(.*)<\/pre>/s.exec(fullHtml);
+    if (!match) {
+      throw new Error("Could not find pre element in response");
+    }
+    return match[1];
+  }
+
   readonly submit: (
     year: number,
     day: number,

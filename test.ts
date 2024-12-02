@@ -7,6 +7,10 @@ class TestAocdSource implements AocdSource {
     Promise.resolve(JSON.stringify({ year, day }))
   );
 
+  getTestData = (_year: number, _day: number): Promise<string> => {
+    throw new Error("Method not implemented.");
+  };
+
   submit = sinon.spy(
     (
       _year: number,

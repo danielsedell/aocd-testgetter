@@ -100,6 +100,10 @@ export class Aocd {
     return this.source.getInput(year, day);
   }
 
+  getTestData(year: number, day: number): Promise<string> {
+    return this.source.getTestData(year, day);
+  }
+
   submit(
     year: number,
     day: number,
